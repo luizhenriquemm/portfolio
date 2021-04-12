@@ -48,7 +48,25 @@ while (True):
                     interfaces.append(nic)
                     interfaces_ips.append(addr.address)
 
-    r = requests.post("http://10.1.1.242/modules/gestor-ti/receiver.php", data={'nome': str(nome_computador), 'os': str(os), 'cpu_uso': str(cpu_uso), 'cpu_frequencia': str(cpu_frequencia), 'memoria_uso': str(memoria_uso), 'memoria_total': str(memoria_total), 'discos_total': len(discos), 'discos': str(discos), 'discos_tamanho': str(discos_tamanho), 'discos_formato': str(discos_formato), 'discos_uso': str(discos_uso), 'interfaces': str(interfaces), 'interfaces_ip': str(interfaces_ips), 'boot_time': str(boot_time)})
+    r = requests.post(
+        "http://server.ip/receptor.php", 
+        data={
+            'nome': str(nome_computador), 
+            'os': str(os), 
+            'cpu_uso': str(cpu_uso), 
+            'cpu_frequencia': str(cpu_frequencia), 
+            'memoria_uso': str(memoria_uso), 
+            'memoria_total': str(memoria_total), 
+            'discos_total': len(discos), 
+            'discos': str(discos), 
+            'discos_tamanho': str(discos_tamanho), 
+            'discos_formato': str(discos_formato), 
+            'discos_uso': str(discos_uso), 
+            'interfaces': str(interfaces), 
+            'interfaces_ip': str(interfaces_ips), 
+            'boot_time': str(boot_time)
+        }
+    )
 
     if str(r.text) != "sucesso":
         print (r.text)
