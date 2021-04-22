@@ -1,4 +1,4 @@
-### Django
+### Django: SiteLoja
 
 Este exercício consiste de um sistema de exemplo para uma loja de bicilicetas e acessórios. O sistema é capaz de manter o cadastro de vendedores e clientes e também de gerenciar as vendas ocorridas entre os mesmos.
 
