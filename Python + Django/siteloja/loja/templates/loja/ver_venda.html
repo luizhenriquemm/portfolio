@@ -1,0 +1,108 @@
+{% include 'loja/base.html' with pg=1 %}
+{% load multiply %}
+
+{% block content %}
+
+<script>
+    function modalExlui(exluiUrl) {
+        $("body").append(
+            `<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Excluir</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Confirma a exclusão deste item?<br>Esta ação não pode ser desfeita.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <a href="${exluiUrl}"><button type="button" class="btn btn-danger">Excluir</button></a>
+                    </div>
+                    </div>
+                </div>
+            </div>`
+        )
+        $(".modal.fade").last().modal()
+    }
+</script>
+
+<div class="container-lg">
+    <a href="/"><button type="button" class="btn btn-light mt-2">< Voltar</button></a>
+    <h2 class="mt-4">Venda:</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col border-top p-2">
+                <p class="text-primary m-0">Código:</p>
+                <p class="m-0">{{venda.id}}</p>
+            </div>
+            <div class="col border-top p-2">
+                <p class="text-primary m-0">Cliente:</p>
+                <p class="m-0">{{venda.cliente}}</p>
+            </div>
+            <div class="col border-top p-2">
+                <p class="text-primary m-0">Vendedor:</p>
+                <p class="m-0">{{venda.vendedor}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col border-top border-bottom p-2">
+                <p class="text-primary m-0">Data:</p>
+                <p class="m-0">{{venda.data|date:"d/m/Y" }}</p>
+            </div>
+            <div class="col border-top border-bottom p-2">
+                <p class="text-primary m-0">Produtos:</p>
+                <p class="m-0">{{ itens.count }}</p>
+            </div>
+            <div class="col border-top border-bottom p-2">
+                <p class="text-primary m-0">Valor Total:</p>
+                <p class="m-0">R$ {{venda.total|floatformat:2}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid p-0">
+        <a href="/editar-venda/{{venda.id}}"><button type="button" class="btn btn-primary mt-2">Editar</button></a>
+        <a href="javascript:modalExlui('/excluir-venda/{{venda.id}}')"><button type="button" class="btn btn-danger mt-2">Excluir</button></a>
+    </div>
+    <h2 class="mt-4">Itens:</h2>
+    <a href="/incluir-item/{{venda.id}}"><button type="button" class="btn btn-success mt-2">Adicionar</button></a>
+    <table class="table table-striped table-bordered table-hover table-sm text-center mt-2">
+        <thead class="">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Quantidade</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Valor Total</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in itens %}
+                <tr>
+                    <td>{{item.ordem}}</th>
+                    <td>{{item.item}}</td>
+                    <td>{{item.quantidade}}</td>
+                    <td>R$ {{item.valor|floatformat:2}}</td>
+                    <td>R$ {{item.valor|multiply:item.quantidade|floatformat:2}}</td>
+                    <td>
+                        <a href="/editar-item/{{item.id}}">Editar</a>
+                        |
+                        <a href="javascript:modalExlui('/excluir-item/{{item.id}}')">Excluir</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6">Nenhum resultado a ser exibido</th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock %}

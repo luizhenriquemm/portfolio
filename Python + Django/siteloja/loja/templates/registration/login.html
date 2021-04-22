@@ -1,0 +1,33 @@
+{% include 'registration/base.html' %}
+
+{% block content %}
+
+<div class="container-lg">
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+
+        <input type="hidden" name="next" value="{{ next }}" />
+
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-4 border rounded p-3 mt-5 text-center">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" autofocus placeholder="Usuário" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Senha" required>
+                    </div>
+                    {% if form.errors %}
+                        <p class="text-danger m-0">Usuário ou senha inválidos.</p>
+                    {% endif %}
+                    <div class="container mt-5">
+                        <button type="submit" class="btn btn-primary">Entrar</button>
+                    </div>
+                    <!--a href="{% url 'password_reset' %}">Esqueci minha senha</a-->
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

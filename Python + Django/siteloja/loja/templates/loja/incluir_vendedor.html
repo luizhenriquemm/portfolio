@@ -1,0 +1,47 @@
+{% include 'loja/base.html' with pg=3 %}
+
+{% block content %}
+
+<div class="container-lg">
+    <a href="/vendedores"><button type="button" class="btn btn-light mt-2">< Voltar</button></a>
+    <h2 class="mt-4">Incluir vendedor:</h2>
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label>Nome</label>
+            <input class="form-control" type="text" name="nome" value="{{form.nome}}" required>
+            <small class="form-text text-muted">Digite o nome do vendedor.</small>
+        </div>
+
+        <button type="submit" class="btn btn-success">Salvar</button>
+    </form>
+</div>
+
+{% if status == False %}
+
+<div class="modal fade" id="erroModal" tabindex="-1" role="dialog" aria-labelledby="erroModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="erroModalLabel">Erro</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Todos os campos do formulário precisam ser preenchidos corretamente para adicionar o vendedor.
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+        </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#erroModal').modal()
+</script>
+
+{% endif %}
+
+{% endblock %}
