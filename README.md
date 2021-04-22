@@ -1,3 +1,3 @@
 # Portfolio
 
-Confira meus projetos particulares públicos.
+Confira meus projetos públicos.
