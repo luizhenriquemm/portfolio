@@ -26,4 +26,8 @@ And simple and short example of real time data ingestion using Spark Structured 
 
 ### DynamoDBChangeDataCapture
 
-Beeing writed soon..
+Beeing writed, soon..
+
+### AutoLoader
+
+Soon...
