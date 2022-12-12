@@ -16,4 +16,14 @@ A class for data ingestion by API requests. It's simple and efficient, I have be
 
 [luizhenriquemm/filecheckpoint](https://github.com/luizhenriquemm/filecheckpoint)
 
-An tool for store file ingestion checkpoint. After processed, the file get marked as done and it will not be readed in the next execution.
+An tool for store file ingestion checkpoint. After processed, the file get marked as done and it will not be readed in the next execution. If you are going to use Spark Structured Stream, it will do this for you, but if not, this tool will be usefull.
+
+### SparkStructuredStream
+
+[luizhenriquemm/sparkstructuredstream](https://github.com/luizhenriquemm/sparkstructuredstream)
+
+And simple and short example of real time data ingestion using Spark Structured Stream.
+
+### DynamoDBChangeDataCapture
+
+Beeing writed soon..
