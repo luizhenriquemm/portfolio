@@ -28,7 +28,7 @@ And simple and short example of real time data ingestion using Spark Structured 
 
 [luizhenriquemm/pyspark-structnormalizer](https://github.com/luizhenriquemm/pyspark-structnormalizer)
 
-A function for normalize struct columns in pyspark dataframes.
+A function that dinamically normalizes struct columns in pyspark dataframes.
 
 ### DynamoDBChangeDataCapture
 
