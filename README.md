@@ -24,7 +24,7 @@ An tool for store file ingestion checkpoint. After processed, the file get marke
 
 And simple and short example of real time data ingestion using Spark Structured Stream.
 
-### 
+### StructNormalizer
 
 [luizhenriquemm/pyspark-structnormalizer](https://github.com/luizhenriquemm/pyspark-structnormalizer)
 
