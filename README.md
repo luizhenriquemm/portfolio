@@ -32,7 +32,9 @@ A function that dinamically normalizes struct columns in pyspark dataframes.
 
 ### DynamoDBChangeDataCapture
 
-Beeing writed, soon..
+[luizhenriquemm/dynamodb-cdc](https://github.com/luizhenriquemm/dynamodb-cdc)
+
+Using CDC in a AWS DynamoDB table using only AWS services.
 
 ### AutoLoader
 
